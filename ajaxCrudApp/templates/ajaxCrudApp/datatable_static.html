@@ -1,0 +1,51 @@
+{% extends "ajaxCrudApp/home.html" %}
+
+{% block content %}
+    <table id="myStaticDatatable" class="apply_dataTable" data-page-length='5' >
+        <thead>
+        <tr>
+            <th >ID</th>
+            <th >Name</th>
+            <th >Email</th>
+            <th >Location</th>
+            <th >Phone</th>
+            <th >Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td>{{employee.id}}</td>
+                        <td>{{employee.employee_name}}</td>
+                        <td>{{employee.employee_email}}</td>
+                        <td>{{employee.employee_location}}</td>
+                        <td>{{employee.employee_phone}}</td>
+                        <td>
+                        
+                            <input
+                            type="button"
+                            data-sid="{{employee.id}}"
+                            class="btn btn-warning btn-sm btn-edit"
+                            value="Edit" 
+                             />
+                             <input
+                             type="button"
+                             data-sid="{{employee.id}}"
+                             class="btn btn-danger btn-sm btn-del"
+                             value="Delete"
+                              />
+                        </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+
+{% block extra_js %}
+    <!-- <script>
+        $(document).ready(function () {
+            $('#myStaticDatatable').DataTable({'iDisplayLength': 5});
+        }); -->
+    <!-- </script> -->
+{% endblock %}
